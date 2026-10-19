@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Shared Text 3D</title>
+  <link rel="stylesheet" href="style.css" />
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "/vendor/three/three.module.js",
+        "socket.io-client": "/socket.io/socket.io.esm.min.js"
+      }
+    }
+  </script>
+</head>
+<body>
+  <!-- Hidden textarea: gives us native typing, backspace, paste, mobile keyboard -->
+  <textarea id="input" autofocus spellcheck="false" aria-label="Shared text"></textarea>
+  <div id="status" class="offline">connecting…</div>
+  <div id="hint">Open a second window and drag it next to this one — click and type to share text</div>
+
+  <!-- Compiled from src/client/main.ts by: npm run build -->
+  <script type="module" src="build/client/main.js"></script>
+</body>
+</html>

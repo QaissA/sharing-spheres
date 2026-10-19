@@ -1,0 +1,8 @@
+html, body { margin: 0; height: 100%; overflow: hidden; background: #0f1020; font-family: sans-serif; }
+canvas { display: block; }
+#input { position: fixed; top: 0; left: 0; width: 1px; height: 1px; opacity: 0; }
+#status { position: fixed; top: 12px; right: 12px; padding: 4px 10px; border-radius: 12px;
+          font-size: 13px; color: #fff; }
+#status.online  { background: #1f8f4e; }
+#status.offline { background: #a33; }
+#hint { position: fixed; bottom: 12px; width: 100%; text-align: center; color: #889; font-size: 13px; }

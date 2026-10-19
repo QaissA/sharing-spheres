@@ -1,0 +1,19 @@
+{
+  "name": "shared-world",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Runs setup.ts, which scaffolds the Shared Text 3D TypeScript project",
+  "engines": {
+    "node": ">=22.18"
+  },
+  "scripts": {
+    "setup": "node setup.ts",
+    "setup:plan": "node setup.ts --plan",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.5",
+    "typescript": "^7.0.2"
+  }
+}
