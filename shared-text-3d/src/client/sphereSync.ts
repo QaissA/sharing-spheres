@@ -1,5 +1,5 @@
-import type { Socket } from 'socket.io-client';
-import type { ClientToServerEvents, ServerToClientEvents, Sphere, SphereState } from '../shared/events.js';
+import type { SyncSocket } from './socket.js';
+import type { Sphere, SphereState } from '../shared/events.js';
 
 export interface SphereHandlers {
   onAll: (spheres: Sphere[]) => void;
@@ -10,7 +10,7 @@ export interface SphereHandlers {
 const MIN_INTERVAL_MS = 1000 / 30; // at most ~30 updates per second
 
 // Sphere events on the existing socket, so one window = one socket id = one sphere.
-export function createSphereSync(socket: Socket<ServerToClientEvents, ClientToServerEvents>, { onAll, onUpdate, onLeave }: SphereHandlers) {
+export function createSphereSync(socket: SyncSocket, { onAll, onUpdate, onLeave }: SphereHandlers) {
   let lastSent: SphereState | null = null;
   let lastSentAt = -Infinity;
 

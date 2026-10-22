@@ -1,0 +1,11 @@
+{
+  // Realtime server: one Durable Object holds the shared text and spheres.
+  // Local: npm run dev (also serves the client from public/). Deploy: npx wrangler deploy
+  "name": "sharing-spheres",
+  "main": "worker/index.ts",
+  "compatibility_date": "2026-06-01",
+  "assets": { "directory": "public" },
+  "durable_objects": { "bindings": [{ "name": "ROOM", "class_name": "Room" }] },
+  // SQLite-backed Durable Objects are the kind the Workers Free plan includes
+  "migrations": [{ "tag": "v1", "new_sqlite_classes": ["Room"] }]
+}
