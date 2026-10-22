@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: sharing-spheres
+    runtime: node
+    plan: free
+    buildCommand: npm ci && npm run build
+    startCommand: node server.ts
+    envVars:
+      - key: CLIENT_ORIGIN
+        sync: false

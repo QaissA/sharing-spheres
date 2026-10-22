@@ -8,7 +8,9 @@ export interface SyncHandlers {
 
 // Thin wrapper around Socket.IO so main.ts doesn't care about event names.
 export function createSync({ onText, onStatus }: SyncHandlers) {
-  const socket: Socket<ServerToClientEvents, ClientToServerEvents> = io();
+  // Connect to the server the import map loads the client from (same origin locally, Render in production)
+  const serverUrl = new URL(import.meta.resolve('socket.io-client')).origin;
+  const socket: Socket<ServerToClientEvents, ClientToServerEvents> = io(serverUrl);
 
   socket.on('connect', () => onStatus(true));
   socket.on('disconnect', () => onStatus(false));

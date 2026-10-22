@@ -7,7 +7,9 @@ import type { ClientToServerEvents, ServerToClientEvents, SphereState } from './
 const PORT = Number(process.env.PORT) || 3000;
 const app = express();
 const server = createServer(app);
-const io = new Server<ClientToServerEvents, ServerToClientEvents>(server);
+// CLIENT_ORIGIN is set when the client is hosted elsewhere (e.g. Vercel)
+const io = new Server<ClientToServerEvents, ServerToClientEvents>(server,
+  process.env.CLIENT_ORIGIN ? { cors: { origin: process.env.CLIENT_ORIGIN } } : {});
 
 // The single source of truth for the shared text (in memory for the MVP).
 let currentText = '';
