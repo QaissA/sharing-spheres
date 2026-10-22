@@ -8,8 +8,8 @@ export interface SyncHandlers {
 
 // Thin wrapper around Socket.IO so main.ts doesn't care about event names.
 export function createSync({ onText, onStatus }: SyncHandlers) {
-  // Connect to the server the import map loads the client from (same origin locally, Render in production)
-  const serverUrl = new URL(import.meta.resolve('socket.io-client')).origin;
+  // Empty locally (same origin); the Vercel build fills in the Render server URL
+  const serverUrl = document.querySelector<HTMLMetaElement>('meta[name="socket-url"]')?.content || undefined;
   const socket: Socket<ServerToClientEvents, ClientToServerEvents> = io(serverUrl);
 
   socket.on('connect', () => onStatus(true));

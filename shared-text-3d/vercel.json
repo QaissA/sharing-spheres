@@ -1,5 +1,5 @@
 {
   "framework": null,
-  "buildCommand": "npm run build && mkdir -p public/vendor && cp -r node_modules/three/build public/vendor/three && sed -i \"s|\\\"/socket.io/|\\\"$SOCKET_URL/socket.io/|\" public/index.html",
+  "buildCommand": "sh scripts/vercel-build.sh",
   "outputDirectory": "public"
 }
